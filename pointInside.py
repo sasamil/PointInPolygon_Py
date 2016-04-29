@@ -20,12 +20,6 @@ def isLeft(P0, P1, P2):
 #               V[] = vertex points of a polygon V[n+1] with V[n]=V[0]
 #      Return:  wn = the winding number (=0 only when P is outside)
 def wn_PnPoly(P, V):
-  # in their approach the list is one member longer. The last and first points coincide.
-  #V = copy.deepcopy(V)
-  #V.append(V[0]) 
-
-  #n = len(V0)
-
   n = len(V)-1
   wn = 0;    # the  winding number counter
   i = 0
@@ -55,13 +49,6 @@ def wn_PnPoly(P, V):
 # Taken from: http://geomalgorithms.com/a03-_inclusion.html
 
 def cn_PnPoly(P, V): # P - Point; V - Polygon
-
-  # in their approach the list is one member longer. The last and first points coincide.
-  #V = copy.deepcopy(V0)
-  #V.append(V[0]) 
-
-  #n = len(V0)
-
   n = len(V)-1
   cn = 0    # the  crossing number counter
 
@@ -83,8 +70,10 @@ def cn_PnPoly(P, V): # P - Point; V - Polygon
   return (cn&1)    # 0 if even (out), and 1 if  odd (in)
 
 #-------------------------------------------------------------------------------
-# x, y -- x and y coordinates of point
-# poly -- a list of tuples [(x, y), (x, y), ...]
+#      Input:   P = a point,
+#               poly[] = vertex points of a polygon poly[n+1] with poly[n]=poly[0]
+#      Return:  False = outside, True = inside
+# Taken from: https://en.wikipedia.org/wiki/Even%E2%80%93odd_rule
 def isPointInPath(P, poly):
         num = len(poly)
         i = 0
@@ -97,6 +86,38 @@ def isPointInPath(P, poly):
                 j = i
 
         return c
+
+#-------------------------------------------------------------------------------
+def is_inside_postgis(polygon, point):
+  length = len(polygon)
+  intersections = 0
+
+  dx2 = point[0] - polygon[0][0]
+  dy2 = point[1] - polygon[0][1]
+  ii = 0
+  jj = 1
+
+  while jj<length:
+    dx  = dx2
+    dy  = dy2
+    dx2 = point[0] - polygon[jj][0]
+    dy2 = point[1] - polygon[jj][1]
+
+    F =(dx-dx2)*dy - dx*(dy-dy2);
+    if 0.0==F and dx*dx2<=0 and dy*dy2<=0:
+      return 2;
+
+    if (dy>=0 and dy2<0) or (dy2>=0 and dy<0):
+      if F > 0:
+        intersections += 1
+      elif F < 0:
+        intersections -= 1
+    
+    ii = jj
+    jj += 1
+            
+  #print 'intersections =', intersections
+  return intersections != 0  
 
 #-------------------------------------------------------------------------------
 # This function gives the answer whether the given point is inside or outside the predefined polygon
@@ -143,42 +164,10 @@ def is_inside_sm(polygon, point):
       # there is another posibility: (dy=0 and dy2>0) or (dy>0 and dy2=0). It is skipped 
       # deliberately to prevent break-points intersections to be counted twice.
     
-    ii += 1
+    ii == j
     jj += 1
             
   #print 'intersections =', intersections
   return intersections & 1  
-
-#-------------------------------------------------------------------------------
-def is_inside_postgis(polygon, point):
-  length = len(polygon)
-  intersections = 0
-
-  dx2 = point[0] - polygon[0][0]
-  dy2 = point[1] - polygon[0][1]
-  ii = 0
-  jj = 1
-
-  while jj<length:
-    dx  = dx2
-    dy  = dy2
-    dx2 = point[0] - polygon[jj][0]
-    dy2 = point[1] - polygon[jj][1]
-
-    F =(dx-dx2)*dy - dx*(dy-dy2);
-    if 0.0==F and dx*dx2<=0 and dy*dy2<=0:
-      return 2;
-
-    if (dy>=0 and dy2<0) or (dy2>=0 and dy<0):
-      if F > 0:
-        intersections += 1
-      elif F < 0:
-        intersections -= 1
-    
-    ii = jj
-    jj += 1
-            
-  #print 'intersections =', intersections
-  return intersections != 0  
 
 
