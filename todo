@@ -2,4 +2,6 @@
 
 2. Make changes in standard algorithms to be sm-like (regarding the coding style).
 
+3. x,y instead of P in arguments. It will make all the implementations a bit faster.
+
 3. Improve wn algoritm (eventally).
