@@ -4,4 +4,6 @@
 
 3. x,y instead of P in arguments. It will make all the implementations a bit faster.
 
-3. Improve wn algoritm (eventally).
+4. Try more test cases.
+
+5. Improve wn algoritm (eventally).
