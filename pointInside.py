@@ -175,7 +175,7 @@ def is_inside_postgis(polygon, point):
       elif F < 0:
         intersections -= 1
     
-    ii += 1
+    ii = jj
     jj += 1
             
   #print 'intersections =', intersections
