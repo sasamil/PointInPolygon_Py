@@ -1,5 +1,5 @@
 1. Make some order to pointInside.py file. Pay more attention to comments.
 
-2. Make changes in standard algorithms to be sm-like (regarding the coding style). At first place length = len(V)#-1
+2. Make changes in standard algorithms to be sm-like (regarding the coding style).
 
 3. Improve wn algoritm (eventally).
