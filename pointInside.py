@@ -9,7 +9,6 @@
 #    Return: >0 for P2 left of the line through P0 and P1
 #            =0 for P2  on the line
 #            <0 for P2  right of the line
-#    See: Algorithm 1 "Area of Triangles and Polygons"
 def isLeft(P0, P1, P2):
   return ((P1[0] - P0[0]) * (P2[1] - P0[1]) - (P2[0] - P0[0]) * (P1[1] - P0[1]))
 
@@ -19,6 +18,7 @@ def isLeft(P0, P1, P2):
 #      Input:   P = a point,
 #               V[] = vertex points of a polygon V[n+1] with V[n]=V[0]
 #      Return:  wn = the winding number (=0 only when P is outside)
+# Taken from: http://geomalgorithms.com/a03-_inclusion.html
 def wn_PnPoly(P, V):
   n = len(V)-1
   wn = 0;    # the  winding number counter
@@ -47,7 +47,6 @@ def wn_PnPoly(P, V):
 #      Return:  0 = outside, 1 = inside
 # This code is patterned after [Franklin, 2000]
 # Taken from: http://geomalgorithms.com/a03-_inclusion.html
-
 def cn_PnPoly(P, V): # P - Point; V - Polygon
   n = len(V)-1
   cn = 0    # the  crossing number counter
