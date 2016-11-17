@@ -3,4 +3,4 @@ The improvement of well known Crossing Number (cn) algorithm determining the inc
 
 This implementation is tested against standard Crossing Number (cn) algorithm, Winding Number (wn) algorithm and the PostGIS implementation.
 
-Unlike standard methods (cn and wn), this one WORKS ON EDGES. Furthermore, according to all my tests, it outperforms standard alghoritms.
+Unlike standard methods (cn and wn), this one WORKS ON EDGES. Furthermore, according to my tests, it outperforms standard alghoritms.
