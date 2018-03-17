@@ -5,4 +5,4 @@ This implementation is tested against standard Crossing Number (cn) algorithm, W
 
 Unlike standard methods (cn and wn), this one WORKS ON EDGES with no performance cost. (on the contrary)
 
-(The C++ implementation of the same algorithm is given <a href="https://github.com/sasamil/PointInPolygon">here</a>.)
+(<i>The C++ implementation of the same algorithm is given <a href="https://github.com/sasamil/PointInPolygon">here</a>.</i>)
