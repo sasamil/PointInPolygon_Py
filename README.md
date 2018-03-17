@@ -4,3 +4,5 @@ The improvement of well known Crossing Number (cn) algorithm determining the inc
 This implementation is tested against standard Crossing Number (cn) algorithm, Winding Number (wn) algorithm and the PostGIS implementation. <img src="http://forum.srpskinacionalisti.com/images/smilies/eusa_snooty.gif" alt="there's a better" height="15" width="16">
 
 Unlike standard methods (cn and wn), this one WORKS ON EDGES with no performance cost. (on the contrary)
+
+(<a href="https://github.com/sasamil/PointInPolygon">The C++ implementation of the same algorithm</a>)
