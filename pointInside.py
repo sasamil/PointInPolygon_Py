@@ -163,7 +163,7 @@ def is_inside_sm(polygon, point):
       # there is another posibility: (dy=0 and dy2>0) or (dy>0 and dy2=0). It is skipped 
       # deliberately to prevent break-points intersections to be counted twice.
     
-    ii == j
+    ii = jj
     jj += 1
             
   #print 'intersections =', intersections
