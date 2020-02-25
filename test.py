@@ -23,53 +23,53 @@ def main():
   
   random.seed(1389)
   i = 0
-  t = time.clock()
+  t = time.perf_counter()
   while i < 50000:
     testpoint = (0.1*random.randrange(-50, 80), 0.1*random.randrange(-40, 40))
     cn_PnPoly(testpoint, test_polygon2)
     i += 1
   
-  print "cn_PnPoly() - execution time: " + str(time.clock() - t)
+  print("cn_PnPoly() - execution time: " + str(time.perf_counter() - t))
 
   random.seed(1389)
   i = 0
-  t = time.clock()
+  t = time.perf_counter()
   while i < 50000:
     testpoint = (0.1*random.randrange(-50, 80), 0.1*random.randrange(-40, 40))
     wn_PnPoly(testpoint, test_polygon2)
     i += 1
   
-  print "wn_PnPoly() - execution time: " + str(time.clock() - t)
+  print("wn_PnPoly() - execution time: " + str(time.perf_counter() - t))
 
   random.seed(1389)
   i = 0
-  t = time.clock()
+  t = time.perf_counter()
   while i < 50000:
     testpoint = (0.1*random.randrange(-50, 80), 0.1*random.randrange(-40, 40))
     is_inside_postgis(test_polygon2, testpoint)
     i += 1
   
-  print "is_inside_postgis() - execution time: " + str(time.clock() - t)
+  print("is_inside_postgis() - execution time: " + str(time.perf_counter() - t))
 
   random.seed(1389)
   i = 0
-  t = time.clock()
+  t = time.perf_counter()
   while i < 50000:
     testpoint = (0.1*random.randrange(-50, 80), 0.1*random.randrange(-40, 40))
     isPointInPath(testpoint, test_polygon2)
     i += 1
   
-  print "isPointInPath() - execution time: " + str(time.clock() - t)
+  print( "isPointInPath() - execution time: " + str(time.perf_counter() - t))
 
   random.seed(1389)
   i = 0
-  t = time.clock()
+  t = time.perf_counter()
   while i < 50000:
     testpoint = (0.1*random.randrange(-50, 80), 0.1*random.randrange(-40, 40))
     is_inside_sm(test_polygon2, testpoint)
     i += 1
   
-  print "is_inside_sm() - execution time: " + str(time.clock() - t)
+  print("is_inside_sm() - execution time: " + str(time.perf_counter() - t))
 
   
 
