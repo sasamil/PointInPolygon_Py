@@ -63,8 +63,6 @@ def cn_PnPoly(P, V): # P - Point; V - Polygon
       if P[0] < (V[i][0] + vt * (V[i+1][0] - V[i][0])): # P.x < intersect - ray toward right - original
         cn += 1   # a valid crossing of y=P[1] right of P.x
 
-    i += 1
-    
   #print str(cn)
   return (cn&1)    # 0 if even (out), and 1 if  odd (in)
 
